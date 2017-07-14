@@ -17,8 +17,8 @@ class RegisterScreen extends React.Component {
 
   render() {
     return (
-      <View style={styles.container}>
-        <Text style={styles.textBig}>Register</Text>
+      <View style={{width:500, height:600, backgroundColor: '#FF585B'}}>
+        <Text>Register thgjgg</Text>
       </View>
     )
   }
