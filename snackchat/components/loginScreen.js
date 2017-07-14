@@ -50,25 +50,21 @@ class LoginScreen extends React.Component {
                         onChangeText={(text) => this.setState({password: text})}
                         value={this.state.password}
                     />
-                    <View>
-                        <TouchableOpacity onPress={ () => {this.login()} } style={style.loginContainer}>
-                            <Text style={styles.}>Login</Text>
-                        </TouchableOpacity>
-                    </View>
+                    <TouchableOpacity onPress={ () => {this.login()} } style={style.loginContainer}>
+                        <View>
+                            <Text>Login</Text>
+                        </View>
+                    </TouchableOpacity>
 
-
-
+                    <TouchableOpacity onPress={ () => {this.register()} }>
+                        <View style={style.secondaryButton}>
+                            <Text>Register</Text>
+                        </View>
+                    </TouchableOpacity>
                 </View>
-                <TouchableOpacity onPress={ () => {this.press()} } style={{}}>
-                    <Text style={{}}>Tap to Login</Text>
-                </TouchableOpacity>
-
-                <TouchableOpacity style={{}} onPress={ () => {this.register()} }>
-                    <Text style={{}}>Tap to Register</Text>
-                </TouchableOpacity>
-            </View>
-        )
-    }
+        </View>
+    )
+}
 }
 
 export default LoginScreen

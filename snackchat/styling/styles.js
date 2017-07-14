@@ -62,7 +62,7 @@ const styles = StyleSheet.create({
         fontFamily: 'Cochin'
     },
     secondaryButton: {
-
+        backgroundColor: "#d5d540",
     },
     loginContainer: {
         backgroundColor: "#99d5f5",
