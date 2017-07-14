@@ -8,7 +8,8 @@ import {
     ListView,
     Alert,
     Button,
-    StyleSheet
+    StyleSheet,
+    Image
 } from 'react-native';
 
 //Screens
@@ -34,12 +35,12 @@ class LoginScreen extends React.Component {
 
     render() {
         return (
-            <View style={styles.container}>
-                <View style={styles.loginBkg}>
-                    <Image source={require('../assets/image/logo.png')} />
+            <View style={styles.loginBkg}>
+                <View>
+                    <Image style={styles.logo} source={require('../assets/images/logo.png')} />
                     <Text style={styles.textBig}>SnackChat!</Text>
                 </View>
-                <View style={style.loginContainer}>
+                <View style={styles.loginContainer}>
                     {/*LOGIN*/}
                     <TextInput style={styles.inputField}
                         onChangeText={(text) => this.setState({username: text})}
@@ -50,14 +51,14 @@ class LoginScreen extends React.Component {
                         onChangeText={(text) => this.setState({password: text})}
                         value={this.state.password}
                     />
-                    <TouchableOpacity onPress={ () => {this.login()} } style={style.loginContainer}>
+                    <TouchableOpacity onPress={ () => {this.login()} } style={styles.loginContainer}>
                         <View>
                             <Text>Login</Text>
                         </View>
                     </TouchableOpacity>
 
                     <TouchableOpacity onPress={ () => {this.register()} }>
-                        <View style={style.secondaryButton}>
+                        <View style={styles.secondaryButton}>
                             <Text>Register</Text>
                         </View>
                     </TouchableOpacity>

@@ -55,26 +55,34 @@ const styles = StyleSheet.create({
     backgroundWhite: {
         backgroundColor: "white"
     },
+    logo: {
+        height: 100,
+    },
     inputField: {
         backgroundColor: 'white',
         borderWidth: 1,
         borderColor: 'black',
-        fontFamily: 'Cochin'
+        fontFamily: 'Cochin',
+        flex: 1
     },
     secondaryButton: {
         backgroundColor: "#d5d540",
+        flex: 1
     },
     loginContainer: {
         backgroundColor: "#99d5f5",
         borderWidth: 1,
         borderColor: 'black',
+        flex: 1,
     },
     loginBkg: {
         backgroundColor: "#f0c3d2",
         borderWidth: 1,
         borderColor: 'black',
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
     },
-
 });
 
 export default styles;
