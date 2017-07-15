@@ -38,10 +38,6 @@ class HomeScreen extends React.Component {
         alert("hello!");
     }
 
-    // toViewSnacksScreen() {
-    //   this.props.navigation.navigate('viewSnacksScreen')
-    // }
-
     toFriendsScreen() {
         this.props.navigation.navigate('Friends')
     }

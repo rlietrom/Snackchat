@@ -3,6 +3,7 @@ import styles from '../styling/styles';
 import { RNS3 } from 'react-native-aws3';
 import KEY from '../noGIT';
 import { AsyncStorage, TouchableOpacity, Image, Button, Text, View } from 'react-native';
+import Modal from 'react-native-modal'
 
 class VisionTestScreen extends React.Component {
     constructor() {
@@ -10,9 +11,14 @@ class VisionTestScreen extends React.Component {
         this.state = {
             image: "",
             awsResp: null,
-            currUser: {}
+            currUser: {},
+            isModalVisible: false
         }
     }
+
+    toggleModal(){
+        this.setState({isModalVisible: !this.state.isModalVisible})
+    };
 
     getRandomInt(min, max) {
         min = Math.ceil(min);
@@ -68,7 +74,7 @@ class VisionTestScreen extends React.Component {
         title: 'VisionTest'
     };
 
-    onPress() {
+    onPressHome() {
         this.props.navigation.navigate('Home');
     }
 
@@ -79,9 +85,15 @@ class VisionTestScreen extends React.Component {
         return (
             <View style={styles.container}>
                 <Image source={{uri: image}} style={styles.visionTest} />
-                <TouchableOpacity onPress={this.onPress}>
-                    <View style={styles.bottomBar}></View>
-                </TouchableOpacity>
+                <View style={styles.bottomBar}>
+                    <TouchableOpacity onPress={this.onPressHome}>
+                        <Text>Home</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity onPress={this.onPressHome}>
+                        <Text>Send</Text>
+                    </TouchableOpacity>
+                </View>
+
 
                 {/* <Button onPress={this.props.navigation.navigate('Home')} title="hello"/> */}
             </View>

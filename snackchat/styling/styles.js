@@ -11,7 +11,8 @@ const styles = StyleSheet.create({
     },
     bottomBar: {
         flex: 1,
-        backgroundColor: '#f0c3d2'
+        backgroundColor: '#f0c3d2',
+        flexDirection: 'row'
     },
     container: {
         flex: 1,
