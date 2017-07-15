@@ -60,6 +60,16 @@ import { AsyncStorage,
                     console.log("this is response.body: ", response.body);
 
                     this.setState({awsResp: response});
+
+                    fetch("https://snackchat-backend-2.herokuapp.com/vision", {
+                      method: "POST",
+                      headers: {
+                        "Content-Type": "application/json"
+                      },
+                      body: JSON.stringify({
+                        link: this.state.awsResp.location
+                      })
+                    })
                     /**
                     * {
                     *   postResponse: {
