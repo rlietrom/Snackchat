@@ -3,6 +3,27 @@ import {StyleSheet} from 'react-native';
 
 //Styles
 const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'center',
+        paddingTop: Constants.statusBarHeight,
+        backgroundColor: '#ecf0f1',
+    },
+    homeI : {
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'center',
+        backgroundColor: '#D9F2FF',
+        width: '100%',
+    },
+    homeII: {
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'center',
+        backgroundColor: '#FFEFD9',
+        width: '100%',
+    },
     logo: {
         height: 40,
         width: 40
@@ -19,10 +40,10 @@ const styles = StyleSheet.create({
         height: 25,
     },
     inputViewWrap: {
-      borderTopColor: 'black',
-      borderBottomColor: 'black',
-      borderTopWidth: 1,
-      borderBottomWidth: 1,
+        borderTopColor: 'black',
+        borderBottomColor: 'black',
+        borderTopWidth: 1,
+        borderBottomWidth: 1,
     },
     inputContainer: {
         backgroundColor: "#99d5f5",
@@ -43,38 +64,38 @@ const styles = StyleSheet.create({
         flexDirection: 'column'
     },
     loginContainer: {
-      backgroundColor: "#99d5f5",
-      borderBottomWidth: 1,
-      borderBottomColor: 'black',
-      flex: 3,
-      justifyContent: 'center',
-      alignItems: 'center',
+        backgroundColor: "#99d5f5",
+        borderBottomWidth: 1,
+        borderBottomColor: 'black',
+        flex: 3,
+        justifyContent: 'center',
+        alignItems: 'center',
     },
     loginContainer2: {
-      backgroundColor: "#d5d540",
-      borderBottomWidth: 1,
-      borderBottomColor: 'black',
-      flex: 3,
-      justifyContent: 'center',
-      alignItems: 'center',
+        backgroundColor: "#d5d540",
+        borderBottomWidth: 1,
+        borderBottomColor: 'black',
+        flex: 3,
+        justifyContent: 'center',
+        alignItems: 'center',
     },
     registerContainer: {
-      backgroundColor: "#d5d540",
-      flex: 3.4,
-      justifyContent: 'center',
-      alignItems: 'center',
+        backgroundColor: "#d5d540",
+        flex: 3.4,
+        justifyContent: 'center',
+        alignItems: 'center',
     },
     registerContainer2: {
-      backgroundColor: "#99d5f5",
-      flex: 3.4,
-      justifyContent: 'center',
-      alignItems: 'center',
+        backgroundColor: "#99d5f5",
+        flex: 3.4,
+        justifyContent: 'center',
+        alignItems: 'center',
     },
     logoContainer: {
-      backgroundColor: "#f0c3d2",
-      flex: 15,
-      justifyContent: 'center',
-      alignItems: 'center',
+        backgroundColor: "#f0c3d2",
+        flex: 15,
+        justifyContent: 'center',
+        alignItems: 'center',
     },
     container: {
         flex: 1,
@@ -83,18 +104,18 @@ const styles = StyleSheet.create({
         fontFamily: 'Arial',
     },
     topBar: {
-      backgroundColor: "#f0c3d2",
-      flex: 2,
-      justifyContent: 'center',
-      alignItems: 'center',
-      flexDirection: 'row',
-      borderBottomColor: 'black',
-      borderBottomWidth: 1,
-      paddingTop: 10
+        backgroundColor: "#f0c3d2",
+        flex: 2,
+        justifyContent: 'center',
+        alignItems: 'center',
+        flexDirection: 'row',
+        borderBottomColor: 'black',
+        borderBottomWidth: 1,
+        paddingTop: 10
     },
     friendsContainer: {
-      flex: 18,
-      backgroundColor: "white"
+        flex: 18,
+        backgroundColor: "white"
     },
     addFriendContainer: {
 
