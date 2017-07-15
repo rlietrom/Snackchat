@@ -48,7 +48,21 @@ const styles = StyleSheet.create({
         // borderWidth: 1, 5, 1, 5,
         fontSize: 12,
         height: 25,
-        fontFamily: 'Arial'
+        fontFamily: 'Arial',
+        textAlign: 'center',
+
+    },
+    primBut: {
+        fontSize: 17,
+        fontWeight: '500'
+    },
+    secBut: {
+        fontSize: 17,
+        fontStyle: 'italic'
+    },
+    homeText: {
+        fontSize: 18,
+        fontWeight: '500'
     },
     inputViewWrap: {
         borderTopColor: 'black',
