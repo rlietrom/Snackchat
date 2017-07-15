@@ -25,7 +25,7 @@ export default StackNavigator({
         title: 'Register'
       }
     },
-    Home : {
+    Home: {
         screen: HomeScreen,
         navigationOptions:  {
           header: null,
