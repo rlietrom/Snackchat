@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from '../styling/styles';
-import { TouchableOpacity, Image, Button, Text, View, StyleSheet } from 'react-native';
+import { AsyncStorage, TouchableOpacity, Image, Button, Text, View, StyleSheet } from 'react-native';
 import { ImagePicker } from 'expo';
 
 class HomeScreen extends React.Component {
@@ -23,28 +23,30 @@ class HomeScreen extends React.Component {
         });
 
         if (!result.cancelled) {
-            this.setState({ image: result.uri });
+            AsyncStorage.setItem('image', result.uri).then(() => {
+                this.props.navigation.navigate('VisionTest');
+            });
         }
     };
+
+    viewSnacksAlert = () => {
+        alert("hello!");
+    }
 
 
 
     render() {
         return (
-            <View>
-                <TouchableOpacity>
-                    <View>
-                        <Text style={styles.textBig}>TAKE PHOTO </Text>
-                    </View>
+            <View style={styles.container}>
+                <TouchableOpacity onPress={this.takeImage} style={styles.homeI}>
+                    <Text>Take a Picture</Text>
                 </TouchableOpacity>
-                <TouchableOpacity>
-                    <View>
-                        <Text style={styles.textBig}>TAKE PHOTO </Text>
-                    </View>
+                <TouchableOpacity onPress={this.viewSnacksAlert} style={styles.homeII}>
+                    <Text>View Snacks</Text>
                 </TouchableOpacity>
             </View>
-        )
+            )
+        }
     }
-}
 
-export default HomeScreen;
+    export default HomeScreen;
