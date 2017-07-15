@@ -12,6 +12,7 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.15.3",
-    "node-localdb": "0.0.3"
+    "node-localdb": "0.0.3",
+    "nutrition-facts": "^0.1.0"
   }
 }
