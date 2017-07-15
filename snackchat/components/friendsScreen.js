@@ -45,10 +45,10 @@ class FriendsScreen extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        {/* <View style={styles.topBar}>
+        <View style={styles.topBar}>
           <Text style={styles.textBig}>SEND YOUR SNACK   </Text>
           <Image style={styles.logoSmall} source={require('../assets/images/logo.png')} />
-        </View> */}
+        </View>
         <ListView
           dataSource={this.state.dataSource}
           renderRow={(rowData) =>
@@ -59,9 +59,9 @@ class FriendsScreen extends React.Component {
                 <Text>{rowData}</Text>
               </TouchableOpacity>
               <View style={styles.addFriendContainer}>
-                {/* <TextInput
+                <TextInput
                   onChangeText={(text) => this.setState({username: text})}
-                  value={this.state.addFriend} /> */}
+                  value={this.state.addFriend} />
               </View>
             </View>
           }/>
