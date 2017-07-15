@@ -11,7 +11,22 @@ const styles = StyleSheet.create({
     },
     bottomBar: {
         flex: 1,
-        backgroundColor: '#f0c3d2'
+        backgroundColor: '#f0c3d2',
+        flexDirection: 'row'
+    },
+    bottomButton: {
+            flex: 1,
+            padding: 15
+    },
+    modalClose: {
+        borderColor: 'white',
+        borderWidth: 2,
+        width: '50%'
+    },
+    modalContainer: {
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'center',
     },
     container: {
         flex: 1,
@@ -24,15 +39,17 @@ const styles = StyleSheet.create({
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
-        backgroundColor: '#D9F2FF',
+        backgroundColor: '#f0c3d2',
         width: '100%',
     },
     homeII: {
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
-        backgroundColor: '#FFEFD9',
+        backgroundColor: '#C6EBFE',
         width: '100%',
+        borderTopWidth: 1,
+        borderTopColor: 'black'
     },
     logo: {
         height: 40,
@@ -46,18 +63,18 @@ const styles = StyleSheet.create({
         backgroundColor: 'white',
         // borderColor: 'black',
         // borderWidth: 1, 5, 1, 5,
-        fontSize: 12,
+        fontSize: 14,
         height: 25,
         fontFamily: 'Arial',
         textAlign: 'center',
 
     },
     primBut: {
-        fontSize: 17,
+        fontSize: 14,
         fontWeight: '500'
     },
     secBut: {
-        fontSize: 17,
+        fontSize: 14,
         fontStyle: 'italic'
     },
     homeText: {
@@ -71,7 +88,7 @@ const styles = StyleSheet.create({
         borderBottomWidth: 1,
     },
     inputContainer: {
-        backgroundColor: "#99d5f5",
+        backgroundColor: "#C6EBFE",
         borderTopWidth: 1,
         borderTopColor: 'black',
         flex: 3,
@@ -80,7 +97,7 @@ const styles = StyleSheet.create({
         flexDirection: 'column'
     },
     inputContainer2: {
-        backgroundColor: "#d5d540",
+        backgroundColor: "#C6EBFE",
         borderTopWidth: 1,
         borderTopColor: 'black',
         flex: 3,
@@ -89,7 +106,7 @@ const styles = StyleSheet.create({
         flexDirection: 'column'
     },
     loginContainer: {
-        backgroundColor: "#99d5f5",
+        backgroundColor: "#C6EBFE",
         borderBottomWidth: 1,
         borderBottomColor: 'black',
         flex: 3,
@@ -97,7 +114,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     loginContainer2: {
-        backgroundColor: "#d5d540",
+        backgroundColor: "#C6EBFE",
         borderBottomWidth: 1,
         borderBottomColor: 'black',
         flex: 5,
@@ -105,13 +122,13 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     registerContainer: {
-        backgroundColor: "#d5d540",
+        backgroundColor: "#C6EBFE",
         flex: 10,
         justifyContent: 'center',
         alignItems: 'center',
     },
     registerContainer2: {
-        backgroundColor: "#99d5f5",
+        backgroundColor: "#C6EBFE",
         flex: 3.4,
         justifyContent: 'center',
         alignItems: 'center',
@@ -145,7 +162,9 @@ const styles = StyleSheet.create({
       backgroundColor: 'white',
       borderBottomWidth: 1,
       borderBottomColor: 'black',
-      height: 20
+      height: 30,
+      alignItems: 'center',
+      justifyContent: 'center'
     },
     addFriendInput: {
       backgroundColor: 'white',
@@ -153,11 +172,17 @@ const styles = StyleSheet.create({
       borderBottomColor: 'black',
       borderTopWidth: 1,
       borderTopColor: 'black',
-      height: 20
+      height: 30,
+      fontSize: 14,
+      justifyContent: 'center'
     },
     nonTopBar: {
       flex: 9,
       backgroundColor: 'white'
+    },
+    text: {
+      alignItems: 'center',
+      justifyContent: 'center'
     }
 
 });

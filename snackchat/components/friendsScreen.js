@@ -21,6 +21,7 @@ class FriendsScreen extends React.Component {
     this.state = {
       dataSource: ds.cloneWithRows([]),
       addFriend: '',
+      toFriend: ''
     };
   }
 
@@ -46,6 +47,26 @@ class FriendsScreen extends React.Component {
     alert(rowData);
   }
 
+  toHome() {
+    if(this.state.toFriend) {
+      fetch('https://snackchat-backend-2.herokuapp.com/api/send', {
+        method: 'POST',
+        headers: {
+            "Content-Type": "application/json"
+        }
+        body: {
+          username: this.state.toFriend,
+          photo: user.sentPhotos[user.sentPhotos.length-1]
+        }
+      })
+      .then(() => this.props.navigation.navigate('Home');)
+      .catch((err) => console.log("Error in sending", err))
+    }
+    else {
+      alert("Choose a SnackPal to send this photo")
+    }
+  }
+
   render() {
     return (
       <View style={styles.container}>
@@ -57,7 +78,11 @@ class FriendsScreen extends React.Component {
           <ListView
             dataSource={this.state.dataSource}
             renderRow={(rowData) =>
+<<<<<<< HEAD
+              <TouchableOpacity onPress={() => this.setState({toFriend: rowData})}>
+=======
               <TouchableOpacity>
+>>>>>>> 3f484d9ee962e489f3503c998edd45f827e4a20b
                 <View style={styles.individualFriend}>
                   <Text>{rowData}</Text>
                 </View>
@@ -65,7 +90,7 @@ class FriendsScreen extends React.Component {
             }
           />
           <View style={{flex: 8}}>
-            <Text>ADD A SNACKPAL</Text>
+            <View style={{alignItems: 'center'}}><Text>ADD SNACKPAL</Text></View>
             <View style={styles.addFriendInput}>
               <TextInput
                 style={styles.inputField}
@@ -77,7 +102,7 @@ class FriendsScreen extends React.Component {
             </View>
           </View>
           <View style={{flex: 1, alignSelf: 'flex-end', padding: 10}}>
-            <Image style={styles.logoSmall} source={require('../assets/images/send.png')} />
+            <Image onPress={this.toHome}style={styles.logo} source={require('../assets/images/Group2.png')} />
           </View>
         </View>
       </View>
