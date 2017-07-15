@@ -24,10 +24,12 @@ class FriendsScreen extends React.Component {
   }
 
   componentDidMount(){
-    AsyncStorage.getItem ('user').then((response)=> {
+    AsyncStorage.getItem ('user').then((response) => {
       console.log("COMPONENT DID MOUNT FRIENDS",response);
       const obj = JSON.parse(response);
+      console.log('OBJ', obj)
       const arr = obj.friendsList;
+      const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});  //allows for scrolling
       this.setState({
         dataSource: ds.cloneWithRows(arr)
       })
@@ -46,29 +48,31 @@ class FriendsScreen extends React.Component {
     return (
       <View style={styles.container}>
         {/* <View style={styles.topBar}>
-          <Text style={styles.textBig}>SEND YOUR SNACK   </Text>
-          <Image style={styles.logoSmall} source={require('../assets/images/logo.png')} />
-        </View> */}
-        <ListView
-          dataSource={this.state.dataSource}
-          renderRow={(rowData) =>
-            <View style={styles.friendsContainer}>
-              <TouchableOpacity
-                style={styles.individualFriend}
-                onPress={this.onTouch.bind(this, rowData)}>
-                <Text>{rowData}</Text>
-              </TouchableOpacity>
-              <View style={styles.addFriendContainer}>
-                {/* <TextInput
-                  onChangeText={(text) => this.setState({username: text})}
-                  value={this.state.addFriend} /> */}
-              </View>
-            </View>
-          }/>
-
+        <Text style={styles.textBig}>SEND YOUR SNACK   </Text>
+        <Image style={styles.logoSmall} source={require('../assets/images/logo.png')} />
+      </View> */}
+      <ListView
+        dataSource={this.state.dataSource}
+        renderRow={(rowData) =>
+          <View style={styles.friendsContainer}>
+            <TouchableOpacity
+              style={styles.individualFriend}
+              onPress={this.onTouch.bind(this, rowData)}>
+              <Text>hi</Text>
+            </TouchableOpacity>
           </View>
-        )
-      }
-    }
+        }/>
+        <View style={styles.addFriendContainer}>
+          {/* <TextInput
+            onChangeText={(text) => this.setState({username: text})}
+            value={this.state.addFriend} /> */}
+          </View>
 
-    export default FriendsScreen;
+
+
+        </View>
+      )
+    }
+  }
+
+  export default FriendsScreen;

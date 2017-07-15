@@ -124,8 +124,7 @@ const styles = StyleSheet.create({
         paddingTop: 10
     },
     friendsContainer: {
-        flex: 9,
-        backgroundColor: "white"
+        flex: 9
     },
     individualFriend: {
       backgroundColor: 'white',
