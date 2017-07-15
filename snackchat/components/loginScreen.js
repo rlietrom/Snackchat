@@ -23,6 +23,7 @@ class LoginScreen extends React.Component {
   };
 
   login() {
+      this.props.navigation.navigate('Home');
   }
   register() {
     this.props.navigation.navigate('Register');

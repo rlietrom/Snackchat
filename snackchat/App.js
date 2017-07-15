@@ -3,7 +3,9 @@ import { StyleSheet, Text, View } from 'react-native';
 import styles from './styling/styles';
 import LoginScreen from './components/loginScreen';
 import RegisterScreen from './components/registerScreen';
+import HomeScreen from './components/homeScreen';
 import { StackNavigator } from 'react-navigation';
+
 
 export default StackNavigator({
     Login: {
@@ -20,5 +22,12 @@ export default StackNavigator({
         title: 'Register'
       }
     },
+    Home : {
+        screen: HomeScreen,
+        navigationOptions:  {
+          header: null,
+          title: 'Home'
+        }
+    }
 }, {headerMode: 'screen',
     initialRouteName: 'Login'});
