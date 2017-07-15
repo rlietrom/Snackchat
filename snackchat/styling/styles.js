@@ -28,6 +28,16 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
     },
+    labelTitle: {
+        color: 'white',
+        fontSize: 20,
+        fontWeight: 'bold',
+    },
+    labelRow: {
+        color: 'white',
+        fontSize: 15,
+        fontStyle: 'italic'
+    },
     container: {
         flex: 1,
         alignItems: 'center',
