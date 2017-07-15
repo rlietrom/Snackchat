@@ -86,13 +86,13 @@ const styles = StyleSheet.create({
         backgroundColor: "#d5d540",
         borderBottomWidth: 1,
         borderBottomColor: 'black',
-        flex: 3,
+        flex: 5,
         justifyContent: 'center',
         alignItems: 'center',
     },
     registerContainer: {
         backgroundColor: "#d5d540",
-        flex: 3.4,
+        flex: 10,
         justifyContent: 'center',
         alignItems: 'center',
     },
@@ -104,7 +104,7 @@ const styles = StyleSheet.create({
     },
     logoContainer: {
         backgroundColor: "#f0c3d2",
-        flex: 15,
+        flex: 4,
         justifyContent: 'center',
         alignItems: 'center',
     },
@@ -126,6 +126,9 @@ const styles = StyleSheet.create({
     friendsContainer: {
         flex: 18,
         backgroundColor: "white"
+    },
+    individualFriend: {
+
     },
     addFriendContainer: {
 

@@ -6,7 +6,7 @@ import RegisterScreen from './components/registerScreen';
 import FriendsScreen from './components/friendsScreen';
 import ViewSnacksScreen from './components/viewSnacksScreen';
 import HomeScreen from './components/homeScreen';
-import VisionTestScreen from './components/visionTestScreen';
+// import VisionTestScreen from './components/visionTestScreen';
 import { StackNavigator } from 'react-navigation';
 
 
@@ -25,19 +25,26 @@ export default StackNavigator({
         title: 'Register'
       }
     },
-    Home : {
+    Home: {
         screen: HomeScreen,
         navigationOptions:  {
           header: null,
           title: 'Home'
         }
     },
-    VisionTest: {
-        screen: VisionTestScreen,
-        navigationOptions:  {
-          header: null,
-          title: 'VisionTest'
-        }
+    // VisionTest: {
+    //     screen: VisionTestScreen,
+    //     navigationOptions:  {
+    //       header: null,
+    //       title: 'VisionTest'
+    //     }
+    // },
+    Friends: {
+      screen: FriendsScreen,
+      navigationOptions:  {
+        header: null,
+        title: 'Friends'
+      }
     }
 }, {headerMode: 'screen',
     initialRouteName: 'Login'});
