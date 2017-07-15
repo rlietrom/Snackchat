@@ -15,10 +15,13 @@ class HomeScreen extends React.Component {
         this.toFriendsScreen = this.toFriendsScreen.bind(this)
     }
 
+<<<<<<< HEAD
     componentWillReceiveProps(nextProps) {
         console.log(nextProps, "receiving props...");
     }
 
+=======
+>>>>>>> 3f484d9ee962e489f3503c998edd45f827e4a20b
     static navigationOptions = {
         title: 'Home'
     };
@@ -42,18 +45,12 @@ class HomeScreen extends React.Component {
         alert("hello!");
     }
 
-    // toViewSnacksScreen() {
-    //   this.props.navigation.navigate('viewSnacksScreen')
-    // }
-
     toFriendsScreen() {
         this.props.navigation.navigate('Friends')
     }
 
     render() {
-        // alert("hello");
         return (
-
             <View style={styles.container}>
                 <TouchableOpacity onPress={this.takeImage} style={styles.homeI}>
                     <Animatable.View animation="bounceInRight" duration={2000} style={{flexDirection:'row'}}>
@@ -64,7 +61,11 @@ class HomeScreen extends React.Component {
                 <TouchableOpacity onPress={this.toFriendsScreen} style={styles.homeII}>
                     <Animatable.View animation="bounceInLeft" duration={2000} style={{flexDirection:'row'}}>
                         <Image style={styles.logo} source={require('../assets/images/logo.png')} />
+<<<<<<< HEAD
                         <Text style={styles.homeText}>   GET SNACKS</Text>
+=======
+                        <Text style={styles.homeText}>   Get Snacks</Text>
+>>>>>>> 3f484d9ee962e489f3503c998edd45f827e4a20b
                     </Animatable.View>
                 </TouchableOpacity>
             </View>
