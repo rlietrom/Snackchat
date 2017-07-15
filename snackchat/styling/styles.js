@@ -48,6 +48,7 @@ const styles = StyleSheet.create({
         // borderWidth: 1, 5, 1, 5,
         fontSize: 12,
         height: 25,
+        fontFamily: 'Arial'
     },
     inputViewWrap: {
         borderTopColor: 'black',
@@ -111,7 +112,6 @@ const styles = StyleSheet.create({
         flex: 1,
         borderColor: 'black',
         borderWidth: 1,
-        fontFamily: 'Arial',
     },
     topBar: {
         backgroundColor: "#f0c3d2",

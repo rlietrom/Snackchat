@@ -17,14 +17,42 @@ class LoginScreen extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      username: ' username',
-      password: ' password',
+      username: '',
+      password: '',
+      userJson: {}
     }
   };
 
   login() {
-    this.props.navigation.navigate('Home')
+    if(this.state.username && this.state.password) {
+      fetch('https://snackchat-backend-2.herokuapp.com/api/login', {
+        method: 'POST',
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          username: this.state.username,
+          password: this.state.password
+        })
+      })
+      .then((response) => response.json())
+
+      .then((responseJson) => {
+        console.log('RESP JSON', responseJson)
+        if(responseJson.success){
+          this.props.navigation.navigate('Home')
+        }
+        else{
+          alert(responseJson.error)
+        }
+      })
+      .catch((err) => {
+        alert(err)
+        console.log("error is", err)
+      })
+    }
   }
+
   register() {
     this.props.navigation.navigate('Register');
   }
@@ -39,6 +67,8 @@ class LoginScreen extends React.Component {
           {/*USERNAME*/}
           <View style={styles.inputViewWrap}>
             <TextInput style={styles.inputField}
+              placeholder=" USERNAME"
+              placeholderTextColor="black"
               onChangeText={(text) => this.setState({username: text})}
               value={this.state.username}
             />
@@ -47,8 +77,10 @@ class LoginScreen extends React.Component {
           {/*PASSWORD*/}
           <View style={styles.inputViewWrap}>
             <TextInput style={styles.inputField}
-            onChangeText={(text) => this.setState({password: text})}
-            value={this.state.password}
+              placeholder=" PASSWORD"
+              placeholderTextColor="black"
+              onChangeText={(text) => this.setState({password: text})}
+              value={this.state.password}
             />
           </View>
         </View>

@@ -16,6 +16,7 @@ class FriendsScreen extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      addFriend: ''
     }
   };
 
@@ -27,9 +28,14 @@ class FriendsScreen extends React.Component {
           <Image style={styles.logoSmall} source={require('../assets/images/logo.png')} />
         </View>
         <ListView style={styles.friendsContainer}>
-          <text> </text>
-          <View style={styles.addFriendContainer}>
+          <View>
+            <text> {}</text>
+          </View>
 
+          <View style={styles.addFriendContainer}>
+            <TextInput
+              onChangeText={(text) => this.setState({username: text})}
+              value={this.state.addFriend} /> 
           </View>
         </ListView>
       </View>
