@@ -17,46 +17,83 @@ class LoginScreen extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      username: 'Username',
-      password: 'Password',
+      username: '',
+      password: '',
+      userJson: {}
     }
   };
 
   login() {
+    if(this.state.username && this.state.password) {
+      fetch('https://snackchat-backend-2.herokuapp.com/api/login', {
+        method: 'POST',
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          username: this.state.username,
+          password: this.state.password
+        })
+      })
+      .then((response) => response.json())
+
+      .then((responseJson) => {
+        console.log('RESP JSON', responseJson)
+        if(responseJson.success){
+          this.props.navigation.navigate('Home')
+        }
+        else{
+          alert(responseJson.error)
+        }
+      })
+      .catch((err) => {
+        alert(err)
+        console.log("error is", err)
+      })
+    }
   }
+
   register() {
     this.props.navigation.navigate('Register');
   }
 
   render() {
     return (
-      <View style={styles.loginScreenContainer}>
-        <View>
+      <View style={styles.container}>
+        <View style={styles.logoContainer}>
           <Image style={styles.logo} source={require('../assets/images/logo.png')} />
-          {/* <Text style={styles.textBig}>SnackChat!</Text> */}
         </View>
-        <View style={styles.loginContainer}>
-          {/*LOGIN*/}
-          <TextInput style={styles.inputField}
-            onChangeText={(text) => this.setState({username: text})}
-            value={this.state.username}
-          />
+        <View style={styles.inputContainer}>
+          {/*USERNAME*/}
+          <View style={styles.inputViewWrap}>
+            <TextInput style={styles.inputField}
+              placeholder=" USERNAME"
+              placeholderTextColor="black"
+              onChangeText={(text) => this.setState({username: text})}
+              value={this.state.username}
+            />
+          </View>
+
           {/*PASSWORD*/}
-          <TextInput style={styles.inputField}
-            onChangeText={(text) => this.setState({password: text})}
-            value={this.state.password}
-          />
-          <TouchableOpacity onPress={ () => {this.login()} } style={styles.loginContainer}>
-            <View>
+          <View style={styles.inputViewWrap}>
+            <TextInput style={styles.inputField}
+              placeholder=" PASSWORD"
+              placeholderTextColor="black"
+              onChangeText={(text) => this.setState({password: text})}
+              value={this.state.password}
+            />
+          </View>
+        </View>
+
+        <View style={styles.loginContainer}>
+          <TouchableOpacity onPress={ () => {this.login()} }>
               <Text>LOGIN</Text>
-            </View>
           </TouchableOpacity>
         </View>
-        <View>
+
+        <View style={styles.registerContainer}>
           <TouchableOpacity onPress={ () => {this.register()} }>
-            <View style={styles.secondaryButton}>
               <Text>REGISTER</Text>
-            </View>
           </TouchableOpacity>
         </View>
       </View>

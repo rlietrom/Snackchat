@@ -7,21 +7,98 @@ import {
   TextInput,
   ListView,
   Alert,
-  Button
+  Button,
+  StyleSheet,
+  Image
 } from 'react-native';
 
-class RegisterScreen extends React.Component {
-  static navigationOptions = {
-    title: 'Register'
+//Screens
+class LoginScreen extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      username: '',
+      password: '',
+    }
+    this.register = this.register.bind(this)
+    this.login = this.login.bind(this)
   };
+
+  login() {
+    this.props.navigation.navigate('Login')
+  }
+  register() {
+    fetch('https://snackchat-backend-2.herokuapp.com/api/user', {
+      method: 'POST',
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        username: this.state.username,
+        password: this.state.password,
+      })
+    })
+    .then((response) => response.json())
+
+    .then((responseJson) => {
+      console.log('RESP JSON', responseJson)
+      if(responseJson.success){
+        this.login()
+      }
+      else{
+        alert(responseJson.error)
+      }
+    })
+    .catch((err) => {
+      alert(err)
+      console.log("error is", err)
+    })
+  }
 
   render() {
     return (
-      <View style={{width:500, height:600, backgroundColor: '#FF585B'}}>
-        <Text>Register thgjgg</Text>
+      <View style={styles.container}>
+        <View style={styles.logoContainer}>
+          <Image style={styles.logo} source={require('../assets/images/logo.png')} />
+        </View>
+        <View style={styles.inputContainer2}>
+          {/*USERNAME*/}
+          <View style={styles.inputViewWrap}>
+            <TextInput style={styles.inputField}
+              placeholder=" USERNAME"
+              placeholderTextColor="black"
+              onChangeText={(text) => this.setState({username: text})}
+              value={this.state.username}
+            />
+          </View>
+
+          {/*PASSWORD*/}
+          <View style={styles.inputViewWrap}>
+            <TextInput style={styles.inputField}
+              placeholder=" PASSWORD"
+              placeholderTextColor="black"
+              onChangeText={(text) => this.setState({password: text})}
+              value={this.state.password}
+            />
+          </View>
+        </View>
+
+        {/*register*/}
+        <View style={styles.loginContainer2}>
+          <TouchableOpacity onPress={ () => {this.register()} }>
+              <Text>REGISTER</Text>
+          </TouchableOpacity>
+        </View>
+
+        {/*back to login*/}
+        <View style={styles.registerContainer2}>
+          <TouchableOpacity onPress={ () => {this.login()} }>
+              <Text>LOGIN</Text>
+          </TouchableOpacity>
+        </View>
       </View>
     )
   }
 }
 
-export default RegisterScreen;
+export default LoginScreen

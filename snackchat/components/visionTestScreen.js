@@ -1,18 +1,45 @@
 import React from 'react';
 import styles from '../styling/styles';
 
-class VisionTestScreen extends React.Component {
-  static navigationOptions = {
-    title: 'Register'
-  };
+import { AsyncStorage,
+    TouchableOpacity,
+    Image,
+    Button,
+    Text,
+    View } from 'react-native';
 
-  render() {
-    return (
-      <View style={styles.container}>
-        <Text style={styles.textBig}>Vision Test Screen</Text>
-      </View>
-    )
-  }
-}
+    class VisionTestScreen extends React.Component {
+        constructor() {
+            super();
+            this.state = {
+                image: null,
+            }
+        }
 
-export default VisionTestScreen;
+        componentDidMount() {
+            AsyncStorage.getItem('image').then((result)=>{
+                this.setState({image: result});
+            })
+        }
+
+        static navigationOptions = {
+            title: 'VisionTest'
+        };
+
+        render() {
+            let image = this.state.image;
+            console.log("RENDER IMAGE",image);
+
+            return (
+                <View style={styles.container}>
+                    <Image source={{uri: image}} style={styles.visionTest} />
+                    <View style={styles.bottomBar}>
+
+                    </View>
+                    {/* <Button onPress={this.props.navigation.navigate('Home')} title="hello"/> */}
+                </View>
+            )
+        }
+    }
+
+    export default VisionTestScreen;
