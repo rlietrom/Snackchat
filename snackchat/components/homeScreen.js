@@ -23,11 +23,9 @@ class HomeScreen extends React.Component {
         });
 
         if (!result.cancelled) {
-            this.setState({ image: result.uri });
-            AsyncStorage.setItem('image', result.uri)
-            .then( () = > {
+            AsyncStorage.setItem('image', result.uri).then(() => {
                 this.props.navigation.navigate('VisionTest');
-            })
+            });
         }
     };
 

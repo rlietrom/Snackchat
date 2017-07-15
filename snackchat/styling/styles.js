@@ -1,5 +1,7 @@
 import React from 'react';
 import {StyleSheet} from 'react-native';
+import { Constants } from 'expo';
+
 
 //Styles
 const styles = StyleSheet.create({
