@@ -5,6 +5,14 @@ import { Constants } from 'expo';
 
 //Styles
 const styles = StyleSheet.create({
+    visionTest: {
+        flex: 9,
+        width: '100%'
+    },
+    bottomBar: {
+        flex: 1,
+        backgroundColor: '#f0c3d2'
+    },
     container: {
         flex: 1,
         alignItems: 'center',
