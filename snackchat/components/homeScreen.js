@@ -2,6 +2,7 @@ import React from 'react';
 import styles from '../styling/styles';
 import { AsyncStorage, TouchableOpacity, Image, Button, Text, View, StyleSheet } from 'react-native';
 import { ImagePicker } from 'expo';
+import Swiper from 'react-native-swiper'
 
 class HomeScreen extends React.Component {
     constructor(props) {
@@ -30,21 +31,25 @@ class HomeScreen extends React.Component {
     };
 
     viewSnacksAlert = () => {
-        alert("hello!");
+      alert("hello!");
     }
 
-
+    toViewSnacksScreen() {
+      this.props.navigation.navigate('viewSnacksScreen')
+    }
 
     render() {
         return (
-            <View style={styles.container}>
-                <TouchableOpacity onPress={this.takeImage} style={styles.homeI}>
-                    <Text>Take a Picture</Text>
-                </TouchableOpacity>
-                <TouchableOpacity onPress={this.viewSnacksAlert} style={styles.homeII}>
-                    <Text>View Snacks</Text>
-                </TouchableOpacity>
-            </View>
+
+                <View style={styles.container}>
+                  <TouchableOpacity onPress={this.takeImage} style={styles.homeI}>
+                      <Text>Send Snacks</Text>
+                  </TouchableOpacity>
+                  <TouchableOpacity onPress={this.viewSnacksAlert} style={styles.homeII}>
+                      <Text>View Snacks</Text>
+                  </TouchableOpacity>
+                </View>
+
             )
         }
     }
