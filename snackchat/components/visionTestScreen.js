@@ -2,17 +2,20 @@ import React from 'react';
 import styles from '../styling/styles';
 import { RNS3 } from 'react-native-aws3';
 import KEY from '../noGIT';
-import { AsyncStorage, TouchableOpacity, Image, Button, Text, View } from 'react-native';
+import { ListView, AsyncStorage, TouchableOpacity, Image, Button, Text, View } from 'react-native';
 import Modal from 'react-native-modal'
 
 class VisionTestScreen extends React.Component {
     constructor() {
         super();
+        const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});  //allows for scrolling
         this.state = {
             image: "",
             awsResp: null,
             currUser: {},
-            isModalVisible: false
+            isModalVisible: false,
+            url: '',
+            dataSource: ds.cloneWithRows([]),
         }
     }
 
@@ -66,6 +69,15 @@ class VisionTestScreen extends React.Component {
                         username: this.state.currUser.username
                     })
                 })
+                .then(result => {
+                    console.log("API RESP", result);
+                    const obj = JSON.parse(result._bodyInit);
+                    const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});  //allows for scrolling
+                    this.setState({
+                        dataSource: ds.cloneWithRows(obj.label),
+                        link: obj.link
+                    })
+                })
             })
         })
     }
@@ -75,7 +87,8 @@ class VisionTestScreen extends React.Component {
     };
 
     onPressHome() {
-        this.props.navigation.navigate('Home');
+        // this.props.navigation.navigate('Home');
+        console.log('hellop')
     }
 
     render() {
@@ -85,11 +98,34 @@ class VisionTestScreen extends React.Component {
         return (
             <View style={styles.container}>
                 <Image source={{uri: image}} style={styles.visionTest} />
+                <Modal isVisible={this.state.isModalVisible} backdropOpacity={0.5}>
+                    <View style={styles.modalContainer}>
+                        <Text style={{ color: 'white' }}>You just took a picture of:</Text>
+                        <ListView
+                          dataSource={this.state.dataSource}
+                          renderRow={(rowData) =>
+                            <TouchableOpacity>
+                              <View style={{ color: 'white' }}>
+                                <Text>{rowData}</Text>
+                              </View>
+                            </TouchableOpacity>
+                          }
+                        />
+                        <TouchableOpacity onPress={this.toggleModal.bind(this)}>
+                            <View style={styles.modalClose}>
+                                <Text style={{color: 'white'}}>Close Results</Text>
+                            </View>
+                        </TouchableOpacity>
+                    </View>
+                </Modal>
                 <View style={styles.bottomBar}>
-                    <TouchableOpacity onPress={this.onPressHome}>
+                    <TouchableOpacity style={styles.bottomButton} onPress={this.onPressHome}>
                         <Text>Home</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity onPress={this.onPressHome}>
+                    <TouchableOpacity  onPress={this.toggleModal.bind(this)}>
+                        <Text>Show Results</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={styles.bottomButton} onPress={this.onPressHome}>
                         <Text>Send</Text>
                     </TouchableOpacity>
                 </View>

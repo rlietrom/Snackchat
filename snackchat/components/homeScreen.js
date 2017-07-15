@@ -44,7 +44,6 @@ class HomeScreen extends React.Component {
 
     render() {
         return (
-
             <View style={styles.container}>
                 <TouchableOpacity onPress={this.takeImage} style={styles.homeI}>
                     <Animatable.View animation="bounceInRight" duration={2000} style={{flexDirection:'row'}}>
@@ -55,7 +54,7 @@ class HomeScreen extends React.Component {
                 <TouchableOpacity onPress={this.toFriendsScreen} style={styles.homeII}>
                     <Animatable.View animation="bounceInLeft" duration={2000} style={{flexDirection:'row'}}>
                         <Image style={styles.logo} source={require('../assets/images/logo.png')} />
-                        <Text style={styles.homeText}>   Send Snacks</Text>
+                        <Text style={styles.homeText}>   Get Snacks</Text>
                     </Animatable.View>
                 </TouchableOpacity>
             </View>

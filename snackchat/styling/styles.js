@@ -14,6 +14,20 @@ const styles = StyleSheet.create({
         backgroundColor: '#f0c3d2',
         flexDirection: 'row'
     },
+    bottomButton: {
+            flex: 1,
+            padding: 15
+    },
+    modalClose: {
+        borderColor: 'white',
+        borderWidth: 2,
+        width: '50%'
+    },
+    modalContainer: {
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
     container: {
         flex: 1,
         alignItems: 'center',
