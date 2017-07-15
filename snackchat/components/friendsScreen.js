@@ -52,14 +52,14 @@ class FriendsScreen extends React.Component {
       fetch('https://snackchat-backend-2.herokuapp.com/api/send', {
         method: 'POST',
         headers: {
-            "Content-Type": "application/json"
-        }
+          "Content-Type": "application/json"
+        },
         body: {
           username: this.state.toFriend,
           photo: user.sentPhotos[user.sentPhotos.length-1]
         }
       })
-      .then(() => this.props.navigation.navigate('Home');)
+      .then(() => this.props.navigation.navigate('Home'))
       .catch((err) => console.log("Error in sending", err))
     }
     else {
@@ -78,37 +78,33 @@ class FriendsScreen extends React.Component {
           <ListView
             dataSource={this.state.dataSource}
             renderRow={(rowData) =>
-<<<<<<< HEAD
               <TouchableOpacity onPress={() => this.setState({toFriend: rowData})}>
-=======
-              <TouchableOpacity>
->>>>>>> 3f484d9ee962e489f3503c998edd45f827e4a20b
-                <View style={styles.individualFriend}>
-                  <Text>{rowData}</Text>
-                </View>
-              </TouchableOpacity>
-            }
-          />
-          <View style={{flex: 8}}>
-            <View style={{alignItems: 'center'}}><Text>ADD SNACKPAL</Text></View>
-            <View style={styles.addFriendInput}>
-              <TextInput
-                style={styles.inputField}
-                placeholder="username"
-                placeholderTextColor='black'
-                onChangeText={(text) => this.setState({addFriend: text})}
-                value={this.state.addFriend}
-              />
+                  <View style={styles.individualFriend}>
+                    <Text>{rowData}</Text>
+                  </View>
+                </TouchableOpacity>
+              }
+            />
+            <View style={{flex: 8}}>
+              <View style={{alignItems: 'center'}}><Text>ADD SNACKPAL</Text></View>
+              <View style={styles.addFriendInput}>
+                <TextInput
+                  style={styles.inputField}
+                  placeholder="username"
+                  placeholderTextColor='black'
+                  onChangeText={(text) => this.setState({addFriend: text})}
+                  value={this.state.addFriend}
+                />
+              </View>
+            </View>
+            <View style={{flex: 1, alignSelf: 'flex-end', padding: 10}}>
+              <Image onPress={this.toHome}style={styles.logo} source={require('../assets/images/Group2.png')} />
             </View>
           </View>
-          <View style={{flex: 1, alignSelf: 'flex-end', padding: 10}}>
-            <Image onPress={this.toHome}style={styles.logo} source={require('../assets/images/Group2.png')} />
-          </View>
         </View>
-      </View>
 
-    )
+      )
+    }
   }
-}
 
-export default FriendsScreen;
+  export default FriendsScreen;

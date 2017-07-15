@@ -46,5 +46,12 @@ export default StackNavigator({
         title: 'Friends'
       }
     }
+    ViewSnacksScreen: {
+      screen: ViewSnacksScreen,
+      navigationOptions:  {
+        header: null,
+        title: 'ViewSnacksScreen'
+      }
+    }
 }, {headerMode: 'screen',
     initialRouteName: 'Home'});
