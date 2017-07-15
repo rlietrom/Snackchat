@@ -1,10 +1,7 @@
 import React from 'react';
 import styles from '../styling/styles';
 import { RNS3 } from 'react-native-aws3';
-
 import KEY from '../noGIT';
-
-console.log(RNS3);
 import { AsyncStorage,
     TouchableOpacity,
     Image,
@@ -21,6 +18,19 @@ import { AsyncStorage,
                 currUser: {}
             }
         }
+    };
+
+
+    componentDidMount() {
+        AsyncStorage.getItem('image').then((result)=>{
+            this.setState({image: result});
+            //AWS STARTS
+            console.log("RESULT",result);
+            const file = {
+                uri: result,
+                name: "image.png",
+                type: "image/png"
+            }
 
 
         componentDidMount() {
@@ -114,5 +124,6 @@ import { AsyncStorage,
             )
         }
     }
+}
 
-    export default VisionTestScreen;
+export default VisionTestScreen;

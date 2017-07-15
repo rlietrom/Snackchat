@@ -13,6 +13,7 @@ import {
   AsyncStorage
 } from 'react-native';
 
+
 class FriendsScreen extends React.Component {
   constructor(props) {
     super(props);
@@ -24,10 +25,13 @@ class FriendsScreen extends React.Component {
   }
 
   componentDidMount(){
-    AsyncStorage.getItem ('user').then((response)=> {
+    AsyncStorage.getItem ('user').then((response) => {
       console.log("COMPONENT DID MOUNT FRIENDS",response);
       const obj = JSON.parse(response);
-      const arr = obj.friendsList;
+      console.log('OBJ', obj)
+      const arr = obj.friendList;
+      console.log("THIS SHOULD BE THE ARRAY", arr)
+      const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});  //allows for scrolling
       this.setState({
         dataSource: ds.cloneWithRows(arr)
       })
@@ -45,30 +49,42 @@ class FriendsScreen extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        {/* <View style={styles.topBar}>
-          <Text style={styles.textBig}>SEND YOUR SNACK   </Text>
+        <View style={styles.topBar}>
+          <Text>SEND SNACK   </Text>
           <Image style={styles.logoSmall} source={require('../assets/images/logo.png')} />
-        </View> */}
-        <ListView
-          dataSource={this.state.dataSource}
-          renderRow={(rowData) =>
-            <View style={styles.friendsContainer}>
-              <TouchableOpacity
-                style={styles.individualFriend}
-                onPress={this.onTouch.bind(this, rowData)}>
-                <Text>{rowData}</Text>
+        </View>
+        <View style={styles.nonTopBar}>
+          <ListView
+            dataSource={this.state.dataSource}
+            renderRow={(rowData) =>
+              <TouchableOpacity onPress={}
+                >
+                <View style={styles.individualFriend}>
+                  <Text>{rowData}</Text>
+                </View>
               </TouchableOpacity>
-              <View style={styles.addFriendContainer}>
-                {/* <TextInput
-                  onChangeText={(text) => this.setState({username: text})}
-                  value={this.state.addFriend} /> */}
-              </View>
+            }
+          />
+          <View style={{flex: 8}}>
+            <Text>ADD A SNACKPAL</Text>
+            <View style={styles.addFriendInput}>
+              <TextInput
+                style={styles.inputField}
+                placeholder="username"
+                placeholderTextColor='black'
+                onChangeText={(text) => this.setState({addFriend: text})}
+                value={this.state.addFriend}
+              />
             </View>
-          }/>
-
           </View>
-        )
-      }
-    }
+          <View style={{flex: 1, alignSelf: 'flex-end', padding: 10}}>
+            <Image style={styles.logoSmall} source={require('../assets/images/send.png')} />
+          </View>
+        </View>
+      </View>
 
-    export default FriendsScreen;
+    )
+  }
+}
+
+export default FriendsScreen;
