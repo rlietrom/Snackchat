@@ -100,13 +100,13 @@ class VisionTestScreen extends React.Component {
                 <Image source={{uri: image}} style={styles.visionTest} />
                 <Modal isVisible={this.state.isModalVisible} backdropOpacity={0.5}>
                     <View style={styles.modalContainer}>
-                        <Text style={{ color: 'white' }}>You just took a picture of:</Text>
+                        <Text style={styles.labelTitle}>You just took a picture of:</Text>
                         <ListView
                           dataSource={this.state.dataSource}
                           renderRow={(rowData) =>
                             <TouchableOpacity>
-                              <View style={{ color: 'white' }}>
-                                <Text>{rowData}</Text>
+                              <View>
+                                <Text style={style.labelRow}>{rowData}</Text>
                               </View>
                             </TouchableOpacity>
                           }
