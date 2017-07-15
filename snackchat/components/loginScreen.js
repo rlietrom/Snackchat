@@ -13,7 +13,10 @@ import {
   AsyncStorage
 } from 'react-native';
 import * as Animatable from 'react-native-animatable'
+<<<<<<< HEAD
 
+=======
+>>>>>>> 40cc90a25631875fbb6020bce19a16cb5645d490
 //Screens
 class LoginScreen extends React.Component {
   constructor(props) {
