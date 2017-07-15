@@ -5,6 +5,7 @@ import LoginScreen from './components/loginScreen';
 import RegisterScreen from './components/registerScreen';
 import FriendsScreen from './components/friendsScreen';
 import ViewSnacksScreen from './components/viewSnacksScreen';
+import HomeScreen from './components/homeScreen'
 import { StackNavigator } from 'react-navigation';
 
 
@@ -31,4 +32,4 @@ export default StackNavigator({
         }
     }
 }, {headerMode: 'screen',
-    initialRouteName: 'FriendsScreen'});
+    initialRouteName: 'Register'});
