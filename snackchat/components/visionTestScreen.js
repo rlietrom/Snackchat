@@ -27,8 +27,7 @@ import { AsyncStorage,
         };
 
         render() {
-            let image = this.state.image;
-            console.log("RENDER IMAGE",image);
+            let image = this.state.image ? this.state.image : '';
 
             return (
                 <View style={styles.container}>

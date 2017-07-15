@@ -21,6 +21,7 @@ class HomeScreen extends React.Component {
             base64: true,
             exif: true,
         });
+        console.log("TAKE IMAGE", result.uri);
 
         if (!result.cancelled) {
             AsyncStorage.setItem('image', result.uri).then(() => {
