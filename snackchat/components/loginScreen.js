@@ -17,13 +17,13 @@ class LoginScreen extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      username: 'Username',
-      password: 'Password',
+      username: ' username',
+      password: ' password',
     }
   };
 
   login() {
-      this.props.navigation.navigate('Home');
+    this.props.navigation.navigate('Home')
   }
   register() {
     this.props.navigation.navigate('Register');
@@ -31,33 +31,37 @@ class LoginScreen extends React.Component {
 
   render() {
     return (
-      <View style={styles.loginScreenContainer}>
-        <View>
+      <View style={styles.container}>
+        <View style={styles.logoContainer}>
           <Image style={styles.logo} source={require('../assets/images/logo.png')} />
-          {/* <Text style={styles.textBig}>SnackChat!</Text> */}
         </View>
-        <View style={styles.loginContainer}>
-          {/*LOGIN*/}
-          <TextInput style={styles.inputField}
-            onChangeText={(text) => this.setState({username: text})}
-            value={this.state.username}
-          />
+        <View style={styles.inputContainer}>
+          {/*USERNAME*/}
+          <View style={styles.inputViewWrap}>
+            <TextInput style={styles.inputField}
+              onChangeText={(text) => this.setState({username: text})}
+              value={this.state.username}
+            />
+          </View>
+
           {/*PASSWORD*/}
-          <TextInput style={styles.inputField}
+          <View style={styles.inputViewWrap}>
+            <TextInput style={styles.inputField}
             onChangeText={(text) => this.setState({password: text})}
             value={this.state.password}
-          />
-          <TouchableOpacity onPress={ () => {this.login()} } style={styles.loginContainer}>
-            <View>
+            />
+          </View>
+        </View>
+
+        <View style={styles.loginContainer}>
+          <TouchableOpacity onPress={ () => {this.login()} }>
               <Text>LOGIN</Text>
-            </View>
           </TouchableOpacity>
         </View>
-        <View>
+
+        <View style={styles.registerContainer}>
           <TouchableOpacity onPress={ () => {this.register()} }>
-            <View style={styles.secondaryButton}>
               <Text>REGISTER</Text>
-            </View>
           </TouchableOpacity>
         </View>
       </View>

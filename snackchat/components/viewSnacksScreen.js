@@ -1,18 +1,34 @@
 import React from 'react';
 import styles from '../styling/styles';
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  TextInput,
+  ListView,
+  Alert,
+  Button,
+  StyleSheet,
+  Image
+} from 'react-native';
 
+//Screens
 class ViewSnacksScreen extends React.Component {
-  static navigationOptions = {
-    title: 'View Snacks'
+  constructor(props) {
+    super(props);
+    this.state = {
+    }
   };
 
   render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.textBig}>View Snacks Screen</Text>
+        <View>
+          <Text>YOUR SNACKS</Text>
+        </View>
       </View>
     )
   }
 }
 
-export default ViewSnacksScreen;
+export default ViewSnacksScreen

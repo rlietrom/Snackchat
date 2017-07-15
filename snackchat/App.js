@@ -3,7 +3,8 @@ import { StyleSheet, Text, View } from 'react-native';
 import styles from './styling/styles';
 import LoginScreen from './components/loginScreen';
 import RegisterScreen from './components/registerScreen';
-import HomeScreen from './components/homeScreen';
+import FriendsScreen from './components/friendsScreen';
+import ViewSnacksScreen from './components/viewSnacksScreen';
 import { StackNavigator } from 'react-navigation';
 
 
@@ -30,4 +31,4 @@ export default StackNavigator({
         }
     }
 }, {headerMode: 'screen',
-    initialRouteName: 'Login'});
+    initialRouteName: 'FriendsScreen'});
