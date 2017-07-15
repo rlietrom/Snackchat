@@ -52,9 +52,9 @@ class ViewSnacksScreen extends React.Component {
             .then((response) => response.json())
             .then((responseJson) => {
                 this.setState({dataSource: responseJson.userInbox})
-                this.props.navigation.navigate('Home'))
-            }
-            .catch((err) => console.log("Error in sending", err))
+                this.props.navigation.navigate('Home')
+            })
+            .catch((err) => {console.log("Error in sending", err)})
         }
         else {
             alert("Choose a SnackPal to send this photo")
