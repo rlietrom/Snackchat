@@ -41,7 +41,7 @@ class LoginScreen extends React.Component {
       .then((responseJson) => {
         console.log('RESP JSON', responseJson)
         if(responseJson.success){
-          AsyncStorage.setItem('user', responseJson.user)
+          AsyncStorage.setItem('user', JSON.stringify(responseJson.user))
           .then(() => {
               this.props.navigation.navigate('Home');
           })

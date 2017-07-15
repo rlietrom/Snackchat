@@ -115,7 +115,7 @@ const styles = StyleSheet.create({
     },
     topBar: {
         backgroundColor: "#f0c3d2",
-        flex: 2,
+        flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
         flexDirection: 'row',
@@ -124,11 +124,13 @@ const styles = StyleSheet.create({
         paddingTop: 10
     },
     friendsContainer: {
-        flex: 18,
+        flex: 9,
         backgroundColor: "white"
     },
     individualFriend: {
-
+      backgroundColor: 'white',
+      borderBottomWidth: 1,
+      borderBottomColor: 'black'
     },
     addFriendContainer: {
 
