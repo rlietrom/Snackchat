@@ -57,8 +57,7 @@ class FriendsScreen extends React.Component {
           <ListView
             dataSource={this.state.dataSource}
             renderRow={(rowData) =>
-              <TouchableOpacity onPress={}
-                >
+              <TouchableOpacity>
                 <View style={styles.individualFriend}>
                   <Text>{rowData}</Text>
                 </View>
