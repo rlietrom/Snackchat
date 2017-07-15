@@ -48,29 +48,43 @@ class FriendsScreen extends React.Component {
 
   render() {
     return (
-      <View>
+      <View style={styles.container}>
         <View style={styles.topBar}>
-          <Text style={styles.textBig}>SEND YOUR SNACK   </Text>
+          <Text>SEND SNACK   </Text>
           <Image style={styles.logoSmall} source={require('../assets/images/logo.png')} />
         </View>
-        <ListView
-          dataSource={this.state.dataSource}
-          renderRow={(rowData) =>
-            <View>
-              <Text>{rowData}</Text>
+        <View style={styles.nonTopBar}>
+          <ListView
+            dataSource={this.state.dataSource}
+            renderRow={(rowData) =>
+              <TouchableOpacity onPress={}
+                >
+                <View style={styles.individualFriend}>
+                  <Text>{rowData}</Text>
+                </View>
+              </TouchableOpacity>
+            }
+          />
+          <View style={{flex: 8}}>
+            <Text>ADD A SNACKPAL</Text>
+            <View style={styles.addFriendInput}>
+              <TextInput
+                style={styles.inputField}
+                placeholder="username"
+                placeholderTextColor='black'
+                onChangeText={(text) => this.setState({addFriend: text})}
+                value={this.state.addFriend}
+              />
             </View>
-          }
-        />
-        <View style={styles.addFriendContainer}>
-          <Text>Add</Text>
-          <TextInput
-            style={styles.inputField}
-            onChangeText={(text) => this.setState({addFriend: text})}
-            value={this.state.addFriend} />
+          </View>
+          <View style={{flex: 1, alignSelf: 'flex-end', padding: 10}}>
+            <Image style={styles.logoSmall} source={require('../assets/images/send.png')} />
           </View>
         </View>
-      )
-    }
-  }
+      </View>
 
-  export default FriendsScreen;
+    )
+  }
+}
+
+export default FriendsScreen;

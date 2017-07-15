@@ -124,16 +124,28 @@ const styles = StyleSheet.create({
         paddingTop: 10
     },
     friendsContainer: {
-        flex: 9
+        flex: 9,
+        backgroundColor: 'white'
     },
     individualFriend: {
       backgroundColor: 'white',
       borderBottomWidth: 1,
-      borderBottomColor: 'black'
+      borderBottomColor: 'black',
+      height: 20
     },
-    addFriendContainer: {
+    addFriendInput: {
+      backgroundColor: 'white',
+      borderBottomWidth: 1,
+      borderBottomColor: 'black',
+      borderTopWidth: 1,
+      borderTopColor: 'black',
+      height: 20
+    },
+    nonTopBar: {
+      flex: 9,
+      backgroundColor: 'white'
+    }
 
-    },
 });
 
 export default styles;
