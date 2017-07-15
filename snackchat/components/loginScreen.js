@@ -9,7 +9,8 @@ import {
   Alert,
   Button,
   StyleSheet,
-  Image
+  Image,
+  AsyncStorage
 } from 'react-native';
 
 //Screens
@@ -40,6 +41,14 @@ class LoginScreen extends React.Component {
       .then((responseJson) => {
         console.log('RESP JSON', responseJson)
         if(responseJson.success){
+          AsyncStorage.setItem('user', responseJson.user)
+          .then(() => {
+              this.props.navigation.navigate('Home');
+          })
+          .catch((err) => {
+            console.log("Error in Async-Login!!");
+            alert(err);
+          })
           this.props.navigation.navigate('Home')
         }
         else{

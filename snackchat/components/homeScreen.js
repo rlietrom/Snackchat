@@ -3,6 +3,7 @@ import styles from '../styling/styles';
 import { AsyncStorage, TouchableOpacity, Image, Button, Text, View, StyleSheet } from 'react-native';
 import { ImagePicker } from 'expo';
 import Swiper from 'react-native-swiper'
+import FriendsScreen from './friendsScreen'
 
 class HomeScreen extends React.Component {
     constructor(props) {
@@ -10,6 +11,7 @@ class HomeScreen extends React.Component {
         this.state = {
             image: null,
         }
+        this.toFriendsScreen = this.toFriendsScreen.bind(this)
     }
 
     static navigationOptions = {
@@ -35,8 +37,12 @@ class HomeScreen extends React.Component {
       alert("hello!");
     }
 
-    toViewSnacksScreen() {
-      this.props.navigation.navigate('viewSnacksScreen')
+    // toViewSnacksScreen() {
+    //   this.props.navigation.navigate('viewSnacksScreen')
+    // }
+
+    toFriendsScreen() {
+      this.props.navigation.navigate('Friends')
     }
 
     render() {
@@ -46,7 +52,7 @@ class HomeScreen extends React.Component {
                   <TouchableOpacity onPress={this.takeImage} style={styles.homeI}>
                       <Text>Send Snacks</Text>
                   </TouchableOpacity>
-                  <TouchableOpacity onPress={this.viewSnacksAlert} style={styles.homeII}>
+                  <TouchableOpacity onPress={this.toFriendsScreen} style={styles.homeII}>
                       <Text>View Snacks</Text>
                   </TouchableOpacity>
                 </View>
