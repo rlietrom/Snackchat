@@ -56,7 +56,9 @@ import { AsyncStorage,
                     },
                     body: JSON.stringify({
                         link: this.state.awsResp.location,
-                        user: this.state.currUser
+                        user: this.state.currUser,
+                        username: this.state.currUser.username
+                      })
                     })
                 })
             });
