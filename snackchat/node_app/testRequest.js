@@ -14,7 +14,7 @@ const visionClient = Vision({
 });
 
 // The name of the image file to annotate
-const fileName = '../resources/mouse.jpg';
+const fileName = 'http://i.imgur.com/rpCrAPU.jpg';
 
 
 app.get('/', function(req, res) {
@@ -38,7 +38,3 @@ app.get('/', function(req, res) {
 var server = app.listen('8080', function(){
   console.log("App listening on port 8080!");
 })
-
-
-
-User

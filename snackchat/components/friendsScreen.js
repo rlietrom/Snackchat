@@ -47,6 +47,7 @@ class FriendsScreen extends React.Component {
   render() {
     return (
       <View style={styles.container}>
+<<<<<<< HEAD
         {/* <View style={styles.topBar}>
         <Text style={styles.textBig}>SEND YOUR SNACK   </Text>
         <Image style={styles.logoSmall} source={require('../assets/images/logo.png')} />
@@ -66,6 +67,29 @@ class FriendsScreen extends React.Component {
           {/* <TextInput
             onChangeText={(text) => this.setState({username: text})}
             value={this.state.addFriend} /> */}
+=======
+        <View style={styles.topBar}>
+          <Text style={styles.textBig}>SEND YOUR SNACK   </Text>
+          <Image style={styles.logoSmall} source={require('../assets/images/logo.png')} />
+        </View>
+        <ListView
+          dataSource={this.state.dataSource}
+          renderRow={(rowData) =>
+            <View style={styles.friendsContainer}>
+              <TouchableOpacity
+                style={styles.individualFriend}
+                onPress={this.onTouch.bind(this, rowData)}>
+                <Text>{rowData}</Text>
+              </TouchableOpacity>
+              <View style={styles.addFriendContainer}>
+                <TextInput
+                  onChangeText={(text) => this.setState({username: text})}
+                  value={this.state.addFriend} />
+              </View>
+            </View>
+          }/>
+
+>>>>>>> 807d96f5165f8a74aebebd0344c1ddfa638b1f48
           </View>
 
 

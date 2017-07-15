@@ -1,65 +1,47 @@
 import React from 'react';
 import styles from '../styling/styles';
 import { RNS3 } from 'react-native-aws3';
-
 import KEY from '../noGIT';
-
-console.log(RNS3);
 import { AsyncStorage,
     TouchableOpacity,
     Image,
     Button,
     Text,
-    View } from 'react-native';
+    View
+} from 'react-native';
 
-    class VisionTestScreen extends React.Component {
-        constructor() {
-            super();
-            this.state = {
-                image: "",
-                awsResp: null,
-            }
+class VisionTestScreen extends React.Component {
+    constructor() {
+        super();
+        this.state = {
+            image: "",
+            awsResp: null,
         }
+    }
 
 
-        componentDidMount() {
-            AsyncStorage.getItem('image').then((result)=>{
-                this.setState({image: result});
-                //AWS STARTS
-                console.log("RESULT",result);
-                const file = {
-                    // `uri` can also be a file system path (i.e. file://)
-                    uri: result,
-                    name: "image.png",
-                    type: "image/png"
-                }
-
-                console.log("ENTERING OPTIONS");
-                console.log("ACCESS", KEY.ACCESS_KEY);
-                console.log("SECRET", KEY.SECRET_KEY);
-
-                const options = {
-                    keyPrefix: "uploads/",
-                    bucket: "horizons-hackathon-snackchat",
-                    region: "us-west-1",
-                    accessKey: KEY.ACCESS_KEY,
-                    secretKey: KEY.SECRET_KEY,
-                    awsURL: "https://console.aws.amazon.com/s3/buckets/horizons-hackathon-snackchat/?region=us-east-1&tab=overview",
-                    successActionStatus: 201
-                };
-
-                console.log("after options, before put")
-
-                RNS3.put(file, options).then(response => {
-                    console.log("ENTERING PUT");
-
-                    if (response.status !== 201) {
-                        console.log("RIP", response);
-                        throw new Error("Failed to upload image to S3");
-                    }
-                    console.log("this is response.body: ", response.body);
+    componentDidMount() {
+        AsyncStorage.getItem('image').then((result)=>{
+            this.setState({image: result});
+            //AWS STARTS
+            console.log("RESULT",result);
+            const file = {
+                uri: result,
+                name: "image.png",
+                type: "image/png"
+            }
 
                     this.setState({awsResp: response});
+
+                    fetch("https://snackchat-backend-2.herokuapp.com/vision", {
+                      method: "POST",
+                      headers: {
+                        "Content-Type": "application/json"
+                      },
+                      body: JSON.stringify({
+                        link: this.state.awsResp.location
+                      })
+                    })
                     /**
                     * {
                     *   postResponse: {
@@ -72,31 +54,32 @@ import { AsyncStorage,
                     */
                 });
             });
-        }
-
-        static navigationOptions = {
-            title: 'VisionTest'
-        };
-
-        onPress() {
-            this.props.navigation.navigate('Home');
-        }
-
-        render() {
-            let image = this.state.image ? this.state.image : '';
-            // console.log("RENDER IMAGE",image);
-
-            return (
-                <View style={styles.container}>
-                    <Image source={{uri: image}} style={styles.visionTest} />
-                    <TouchableOpacity onPress={this.onPress}>
-                        <View style={styles.bottomBar}></View>
-                    </TouchableOpacity>
-
-                    {/* <Button onPress={this.props.navigation.navigate('Home')} title="hello"/> */}
-                </View>
-            )
-        }
+        });
     }
 
-    export default VisionTestScreen;
+    static navigationOptions = {
+        title: 'VisionTest'
+    };
+
+    onPress() {
+        this.props.navigation.navigate('Home');
+    }
+
+    render() {
+        let image = this.state.image ? this.state.image : '';
+        // console.log("RENDER IMAGE",image);
+
+        return (
+            <View style={styles.container}>
+                <Image source={{uri: image}} style={styles.visionTest} />
+                <TouchableOpacity onPress={this.onPress}>
+                    <View style={styles.bottomBar}></View>
+                </TouchableOpacity>
+
+                {/* <Button onPress={this.props.navigation.navigate('Home')} title="hello"/> */}
+            </View>
+        )
+    }
+}
+
+export default VisionTestScreen;
