@@ -19,24 +19,30 @@ const styles = StyleSheet.create({
             padding: 15
     },
     modalClose: {
+        padding: 20,
         borderColor: 'white',
         borderWidth: 2,
-        width: '50%'
     },
     modalContainer: {
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
+        margin: 40
     },
     labelTitle: {
         color: 'white',
-        fontSize: 20,
+        fontSize: 25,
         fontWeight: 'bold',
+        padding: 10,
+        textAlign: 'center',
     },
     labelRow: {
         color: 'white',
-        fontSize: 15,
-        fontStyle: 'italic'
+        fontSize: 20,
+        fontStyle: 'italic',
+        textAlign: 'center',
+        padding: 10
+
     },
     container: {
         flex: 1,
@@ -77,14 +83,14 @@ const styles = StyleSheet.create({
         height: 25,
         fontFamily: 'Arial',
         textAlign: 'center',
-
+        height: 40
     },
     primBut: {
-        fontSize: 14,
+        fontSize: 20,
         fontWeight: '500'
     },
     secBut: {
-        fontSize: 14,
+        fontSize: 20,
         fontStyle: 'italic'
     },
     homeText: {
