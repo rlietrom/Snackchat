@@ -50,7 +50,6 @@ NF.getNutrition('01001','b')
   console.log(err)
 })
 
-})
 /**
  * TESTING ABOVE ^^^^^^^^^^^
  */
