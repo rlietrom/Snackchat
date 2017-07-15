@@ -48,7 +48,21 @@ const styles = StyleSheet.create({
         // borderWidth: 1, 5, 1, 5,
         fontSize: 12,
         height: 25,
-        fontFamily: 'Arial'
+        fontFamily: 'Arial',
+        textAlign: 'center',
+
+    },
+    primBut: {
+        fontSize: 17,
+        fontWeight: '500'
+    },
+    secBut: {
+        fontSize: 17,
+        fontStyle: 'italic'
+    },
+    homeText: {
+        fontSize: 18,
+        fontWeight: '500'
     },
     inputViewWrap: {
         borderTopColor: 'black',
@@ -124,16 +138,28 @@ const styles = StyleSheet.create({
         paddingTop: 10
     },
     friendsContainer: {
-        flex: 9
+        flex: 9,
+        backgroundColor: 'white'
     },
     individualFriend: {
       backgroundColor: 'white',
       borderBottomWidth: 1,
-      borderBottomColor: 'black'
+      borderBottomColor: 'black',
+      height: 20
     },
-    addFriendContainer: {
+    addFriendInput: {
+      backgroundColor: 'white',
+      borderBottomWidth: 1,
+      borderBottomColor: 'black',
+      borderTopWidth: 1,
+      borderTopColor: 'black',
+      height: 20
+    },
+    nonTopBar: {
+      flex: 9,
+      backgroundColor: 'white'
+    }
 
-    },
 });
 
 export default styles;

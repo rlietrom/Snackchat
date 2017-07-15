@@ -7,52 +7,60 @@ import { AsyncStorage,
     Image,
     Button,
     Text,
-    View
-} from 'react-native';
+    View } from 'react-native';
 
-class VisionTestScreen extends React.Component {
-    constructor() {
-        super();
-        this.state = {
-            image: "",
-            awsResp: null,
+    class VisionTestScreen extends React.Component {
+        constructor() {
+            super();
+            this.state = {
+                image: "",
+                awsResp: null,
+                currUser: {}
+            }
         }
-    }
+    };
+
 
 
     componentDidMount() {
-        AsyncStorage.getItem('image').then((result)=>{
+        AsyncStorage.getItem('image')
+        .then((result)=>{
             this.setState({image: result});
-            //AWS STARTS
-            console.log("RESULT",result);
+            return AsyncStorage.getItem('user')
+        });
+        .then((userResp)=>{
+            this.setState({currUser: userResp});
             const file = {
-                uri: result,
+                uri: this.state.image,
                 name: "image.png",
                 type: "image/png"
             }
-
-                    this.setState({awsResp: response});
-
-                    fetch("https://snackchat-backend-2.herokuapp.com/vision", {
-                      method: "POST",
-                      headers: {
+            const options = {
+                keyPrefix: "uploads/",
+                bucket: "horizons-hackathon-snackchat",
+                region: "us-west-1",
+                accessKey: KEY.ACCESS_KEY,
+                secretKey: KEY.SECRET_KEY,
+                awsURL: "https://console.aws.amazon.com/s3/buckets/horizons-hackathon-snackchat/?region=us-east-1&tab=overview",
+                successActionStatus: 201
+            };
+            RNS3.put(file, options).then(response => {
+                if (response.status !== 201) {
+                    throw new Error("Failed to upload image to S3");
+                }
+                this.setState({awsResp: response});
+                fetch("https://snackchat-backend-2.herokuapp.com/vision", {
+                    method: "POST",
+                    headers: {
                         "Content-Type": "application/json"
-                      },
-                      body: JSON.stringify({
-                        link: this.state.awsResp.location
+                    },
+                    body: JSON.stringify({
+                        link: this.state.awsResp.location,
+                        user: this.state.currUser,
+                        username: this.state.currUser.username
                       })
                     })
-                    /**
-                    * {
-                    *   postResponse: {
-                    *     bucket: "your-bucket",
-                    *     etag : "9f620878e06d28774406017480a59fd4",
-                    *     key: "uploads/image.png",
-                    *     location: "https://your-bucket.s3.amazonaws.com/uploads%2Fimage.png"
-                    *   }
-                    * }
-                    */
-                });
+                })
             });
         });
     }
@@ -80,6 +88,7 @@ class VisionTestScreen extends React.Component {
             </View>
         )
     }
+}
 }
 
 export default VisionTestScreen;

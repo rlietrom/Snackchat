@@ -15,6 +15,14 @@ class HomeScreen extends React.Component {
         this.toFriendsScreen = this.toFriendsScreen.bind(this)
     }
 
+    componentDidMount() {
+        alert('mount');
+    }
+
+    componentWillReceiveProps(nextProps) {
+        console.log(nextProps, "receiving props...");
+    }
+
     static navigationOptions = {
         title: 'Home'
     };
@@ -35,7 +43,7 @@ class HomeScreen extends React.Component {
     };
 
     viewSnacksAlert = () => {
-      alert("hello!");
+        alert("hello!");
     }
 
     // toViewSnacksScreen() {
@@ -43,28 +51,30 @@ class HomeScreen extends React.Component {
     // }
 
     toFriendsScreen() {
-      this.props.navigation.navigate('Friends')
+        this.props.navigation.navigate('Friends')
     }
 
     render() {
+        // alert("hello");
         return (
 
-                <View style={styles.container}>
-                  <Text animation="zoomInDown" delay={700} style={styles.instructions}>
-         Tap one of the following to animate for ms
-       </Text>
-                  <TouchableOpacity onPress={this.takeImage} style={styles.homeI}>
-                      <View animation="lightSpeedIn" delay={500}>
-                        <Text>Send Snacks</Text>
-                      </View>
-                  </TouchableOpacity>
-                  <TouchableOpacity onPress={this.toFriendsScreen} style={styles.homeII}>
-                      <Text>View Snacks</Text>
-                  </TouchableOpacity>
-                </View>
+            <View style={styles.container}>
+                <TouchableOpacity onPress={this.takeImage} style={styles.homeI}>
+                    <Animatable.View animation="bounceInRight" duration={2000} style={{flexDirection:'row'}}>
+                        <Text style={styles.homeText}>Send Snacks  </Text>
+                        <Image style={styles.logo} source={require('../assets/images/logo.png')} />
+                    </Animatable.View>
+                </TouchableOpacity>
+                <TouchableOpacity onPress={this.toFriendsScreen} style={styles.homeII}>
+                    <Animatable.View animation="bounceInLeft" duration={2000} style={{flexDirection:'row'}}>
+                        <Image style={styles.logo} source={require('../assets/images/logo.png')} />
+                        <Text style={styles.homeText}>   Send Snacks</Text>
+                    </Animatable.View>
+                </TouchableOpacity>
+            </View>
 
-            )
-        }
+        )
     }
+}
 
-    export default HomeScreen;
+export default HomeScreen;

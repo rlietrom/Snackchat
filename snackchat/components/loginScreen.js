@@ -12,6 +12,8 @@ import {
   Image,
   AsyncStorage
 } from 'react-native';
+import * as Animatable from 'react-native-animatable'
+
 
 //Screens
 class LoginScreen extends React.Component {
@@ -49,7 +51,6 @@ class LoginScreen extends React.Component {
             console.log("Error in Async-Login!!");
             alert(err);
           })
-          this.props.navigation.navigate('Home')
         }
         else{
           alert(responseJson.error)
@@ -59,6 +60,9 @@ class LoginScreen extends React.Component {
         alert(err)
         console.log("error is", err)
       })
+    }
+    else {
+        alert("Enter credentials")
     }
   }
 
@@ -70,7 +74,7 @@ class LoginScreen extends React.Component {
     return (
       <View style={styles.container}>
         <View style={styles.logoContainer}>
-          <Image style={styles.logo} source={require('../assets/images/logo.png')} />
+          <Animatable.Image animation='bounce' duration={1500} iterationCount='infinite' style={styles.logo} source={require('../assets/images/logo.png')} />
         </View>
         <View style={styles.inputContainer}>
           {/*USERNAME*/}
@@ -85,7 +89,7 @@ class LoginScreen extends React.Component {
 
           {/*PASSWORD*/}
           <View style={styles.inputViewWrap}>
-            <TextInput style={styles.inputField}
+            <TextInput secureTextEntry={true} style={styles.inputField}
               placeholder=" PASSWORD"
               placeholderTextColor="black"
               onChangeText={(text) => this.setState({password: text})}
@@ -96,13 +100,13 @@ class LoginScreen extends React.Component {
 
         <View style={styles.loginContainer}>
           <TouchableOpacity onPress={ () => {this.login()} }>
-              <Text>LOGIN</Text>
+              <Text style={styles.primBut}>LOGIN</Text>
           </TouchableOpacity>
         </View>
 
         <View style={styles.registerContainer}>
           <TouchableOpacity onPress={ () => {this.register()} }>
-              <Text>REGISTER</Text>
+              <Text style={styles.secBut}>REGISTER</Text>
           </TouchableOpacity>
         </View>
       </View>
