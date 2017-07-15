@@ -15,14 +15,6 @@ class HomeScreen extends React.Component {
         this.toFriendsScreen = this.toFriendsScreen.bind(this)
     }
 
-    componentDidMount() {
-        alert('mount');
-    }
-
-    componentWillReceiveProps(nextProps) {
-        console.log(nextProps, "receiving props...");
-    }
-
     static navigationOptions = {
         title: 'Home'
     };
@@ -55,7 +47,6 @@ class HomeScreen extends React.Component {
     }
 
     render() {
-        // alert("hello");
         return (
 
             <View style={styles.container}>

@@ -2,24 +2,23 @@ import React from 'react';
 import styles from '../styling/styles';
 import { RNS3 } from 'react-native-aws3';
 import KEY from '../noGIT';
-import { AsyncStorage,
-    TouchableOpacity,
-    Image,
-    Button,
-    Text,
-    View } from 'react-native';
+import { AsyncStorage, TouchableOpacity, Image, Button, Text, View } from 'react-native';
 
-    class VisionTestScreen extends React.Component {
-        constructor() {
-            super();
-            this.state = {
-                image: "",
-                awsResp: null,
-                currUser: {}
-            }
+class VisionTestScreen extends React.Component {
+    constructor() {
+        super();
+        this.state = {
+            image: "",
+            awsResp: null,
+            currUser: {}
         }
-    };
+    }
 
+    getRandomInt(min, max) {
+        min = Math.ceil(min);
+        max = Math.floor(max);
+        return Math.floor(Math.random() * (max - min)) + min; //The maximum is exclusive and the minimum is inclusive
+    }
 
 
     componentDidMount() {
@@ -27,12 +26,12 @@ import { AsyncStorage,
         .then((result)=>{
             this.setState({image: result});
             return AsyncStorage.getItem('user')
-        });
+        })
         .then((userResp)=>{
             this.setState({currUser: userResp});
             const file = {
                 uri: this.state.image,
-                name: "image.png",
+                name: "image" + this.getRandomInt(0,10000) + ".png",
                 type: "image/png"
             }
             const options = {
@@ -49,20 +48,20 @@ import { AsyncStorage,
                     throw new Error("Failed to upload image to S3");
                 }
                 this.setState({awsResp: response});
-                fetch("https://snackchat-backend-2.herokuapp.com/vision", {
+                console.log("HELLA STATE",this.state);
+                fetch("https://snackchat-backend-2.herokuapp.com/api/vision", {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json"
                     },
                     body: JSON.stringify({
-                        link: this.state.awsResp.location,
+                        link: this.state.awsResp.body.postResponse.location,
                         user: this.state.currUser,
                         username: this.state.currUser.username
-                      })
                     })
                 })
-            });
-        });
+            })
+        })
     }
 
     static navigationOptions = {
@@ -88,7 +87,6 @@ import { AsyncStorage,
             </View>
         )
     }
-}
 }
 
 export default VisionTestScreen;
