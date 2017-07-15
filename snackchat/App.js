@@ -47,4 +47,4 @@ export default StackNavigator({
       }
     }
 }, {headerMode: 'screen',
-    initialRouteName: 'Login'});
+    initialRouteName: 'Home'});
