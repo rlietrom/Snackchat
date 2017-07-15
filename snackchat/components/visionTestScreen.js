@@ -18,13 +18,19 @@ import { AsyncStorage,
             this.state = {
                 image: "",
                 awsResp: null,
+                currUser: {}
             }
         }
 
 
         componentDidMount() {
-            AsyncStorage.getItem('image').then((result)=>{
+            AsyncStorage.getItem('image')
+            .then((result)=>{
                 this.setState({image: result});
+                return AsyncStorage.getItem('user')
+            })
+            .then((userResp)=>{
+                this.setState({currUser: userResp});
                 //AWS STARTS
                 console.log("RESULT",result);
                 const file = {
@@ -60,14 +66,14 @@ import { AsyncStorage,
                     console.log("this is response.body: ", response.body);
 
                     this.setState({awsResp: response});
-
                     fetch("https://snackchat-backend-2.herokuapp.com/vision", {
                       method: "POST",
                       headers: {
                         "Content-Type": "application/json"
                       },
                       body: JSON.stringify({
-                        link: this.state.awsResp.location
+                        link: this.state.awsResp.location,
+                        user: this.state.currUser
                       })
                     })
                     /**

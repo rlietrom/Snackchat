@@ -14,7 +14,7 @@ const visionClient = Vision({
 });
 
 // The name of the image file to annotate
-const fileName = 'http://i.imgur.com/rpCrAPU.jpg';
+const fileName = 'https://s3-us-west-1.amazonaws.com/horizons-hackathon-snackchat/uploads/image.png';
 
 
 app.get('/', function(req, res) {
