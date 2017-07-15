@@ -4,6 +4,7 @@ import { AsyncStorage, TouchableOpacity, Image, Button, Text, View, StyleSheet }
 import { ImagePicker } from 'expo';
 import Swiper from 'react-native-swiper'
 import FriendsScreen from './friendsScreen'
+import * as Animatable from 'react-native-animatable'
 
 class HomeScreen extends React.Component {
     constructor(props) {
@@ -49,8 +50,13 @@ class HomeScreen extends React.Component {
         return (
 
                 <View style={styles.container}>
+                  <Text animation="zoomInDown" delay={700} style={styles.instructions}>
+         Tap one of the following to animate for ms
+       </Text>
                   <TouchableOpacity onPress={this.takeImage} style={styles.homeI}>
-                      <Text>Send Snacks</Text>
+                      <View animation="lightSpeedIn" delay={500}>
+                        <Text>Send Snacks</Text>
+                      </View>
                   </TouchableOpacity>
                   <TouchableOpacity onPress={this.toFriendsScreen} style={styles.homeII}>
                       <Text>View Snacks</Text>
