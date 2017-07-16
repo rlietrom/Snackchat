@@ -11,7 +11,6 @@ import {
   StyleSheet,
   Image
 } from 'react-native';
-
 //Screens
 class ViewSnacksScreen extends React.Component {
   constructor(props) {
@@ -21,6 +20,24 @@ class ViewSnacksScreen extends React.Component {
       dataSource: []
     }
   };
+
+  static navigationOptions = {
+    title: 'ViewSnacks'
+  };
+
+  componentDidMount(){
+    AsyncStorage.getItem ('user').then((response) => {
+      const obj = JSON.parse(response);
+      const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});  //allows for scrolling
+      this.setState({
+        user: obj
+      })
+    })
+    .catch((err)=> {
+      console.log(err);
+    })
+  }
+  
 
   componentDidMount(){
     AsyncStorage.getItem ('user').then((response) => {
@@ -48,7 +65,7 @@ class ViewSnacksScreen extends React.Component {
       })
       .then((response) => response.json())
       .then((responseJson) => this.setState({dataSource: responseJson.userInbox})
-        () => this.props.navigation.navigate('Home'))
+      () => this.props.navigation.navigate('Home'))
       .catch((err) => console.log("Error in sending", err))
     }
     else {
@@ -68,20 +85,21 @@ class ViewSnacksScreen extends React.Component {
             dataSource={this.state.dataSource}
             renderRow={(rowData) =>
               <TouchableOpacity onPress={() => this.setState({rowData})}>
-                  <View style={styles.individualFriend}>
-                    <Text>{rowData}</Text>
-                  </View>
-                </TouchableOpacity>
-              }
-            />
-            <View style={{flex: 1, alignSelf: 'flex-end', padding: 10}}>
-              <Image onPress={this.toHome}style={styles.logo} source={require('../assets/images/HOUSE.png')} />
-            </View>
+                <View style={styles.individualFriend}>
+                  <Text>{rowData}</Text>
+                </View>
+              </TouchableOpacity>
+            }
+          />
+          <View style={{flex: 1, alignSelf: 'flex-end', padding: 10}}>
+            <Image onPress={this.toHome}style={styles.logo} source={require('../assets/images/HOUSE.png')} />
           </View>
         </View>
+      </View>
 
-      )
-    }
+    )
   }
+}
+
 
 export default ViewSnacksScreen

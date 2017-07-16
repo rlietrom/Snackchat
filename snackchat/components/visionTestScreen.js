@@ -15,7 +15,7 @@ class VisionTestScreen extends React.Component {
             currUser: {},
             isModalVisible: false,
             url: '',
-            dataSource: ds.cloneWithRows([]),
+            dataSource: [],
         }
     }
 
@@ -87,8 +87,11 @@ class VisionTestScreen extends React.Component {
     };
 
     onPressHome() {
-        // this.props.navigation.navigate('Home');
-        console.log('hellop')
+        this.props.navigation.navigate('Home');
+    }
+
+    onPressFriends() {
+        this.props.navigation.navigate('Friends');
     }
 
     render() {
@@ -101,40 +104,44 @@ class VisionTestScreen extends React.Component {
                 <Modal isVisible={this.state.isModalVisible} backdropOpacity={0.5}>
                     <View style={styles.modalContainer}>
                         <Text style={styles.labelTitle}>You just took a picture of:</Text>
-                        <ListView
+
+                        {this.state.dataSource.toString() ? <ListView
                           dataSource={this.state.dataSource}
                           renderRow={(rowData) =>
                             <TouchableOpacity>
                               <View>
-                                <Text style={style.labelRow}>{rowData}</Text>
+                                <Text style={styles.labelRow}>{rowData}</Text>
                               </View>
                             </TouchableOpacity>
                           }
-                        />
-                        <TouchableOpacity onPress={this.toggleModal.bind(this)}>
-                            <View style={styles.modalClose}>
-                                <Text style={{color: 'white'}}>Close Results</Text>
-                            </View>
-                        </TouchableOpacity>
-                    </View>
-                </Modal>
-                <View style={styles.bottomBar}>
-                    <TouchableOpacity style={styles.bottomButton} onPress={this.onPressHome}>
-                        <Text>Home</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity  onPress={this.toggleModal.bind(this)}>
-                        <Text>Show Results</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity style={styles.bottomButton} onPress={this.onPressHome}>
-                        <Text>Send</Text>
+                        /> :
+                        <Text style={{color: 'white', fontSize: 20}}>That was garbage.</Text>
+                    }
+
+                    <TouchableOpacity onPress={this.toggleModal.bind(this)}>
+                        <View style={styles.modalClose}>
+                            <Text style={{color: 'white'}}>Close Results</Text>
+                        </View>
                     </TouchableOpacity>
                 </View>
-
-
-                {/* <Button onPress={this.props.navigation.navigate('Home')} title="hello"/> */}
+            </Modal>
+            <View style={styles.bottomBar}>
+                <TouchableOpacity style={styles.bottomButton} onPress={this.onPressHome.bind(this)}>
+                    <Text>Home</Text>
+                </TouchableOpacity>
+                <TouchableOpacity  onPress={this.toggleModal.bind(this)}>
+                    <Text>Show Results</Text>
+                </TouchableOpacity>
+                <TouchableOpacity style={styles.bottomButton} onPress={this.onPressFriends.bind(this)}>
+                    <Text>Send</Text>
+                </TouchableOpacity>
             </View>
-        )
-    }
+
+
+            {/* <Button onPress={this.props.navigation.navigate('Home')} title="hello"/> */}
+        </View>
+    )
+}
 }
 
 export default VisionTestScreen;

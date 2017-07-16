@@ -14,37 +14,44 @@ export default StackNavigator({
     Login: {
         screen: LoginScreen,
         navigationOptions:  {
-          header: null,
-          title: 'Login'
+            header: null,
+            title: 'Login'
         }
     },
     Register: {
-      screen: RegisterScreen,
-      navigationOptions:  {
-        header: null,
-        title: 'Register'
-      }
+        screen: RegisterScreen,
+        navigationOptions:  {
+            header: null,
+            title: 'Register'
+        }
     },
     Home: {
         screen: HomeScreen,
         navigationOptions:  {
-          header: null,
-          title: 'Home'
+            header: null,
+            title: 'Home'
         }
     },
     VisionTest: {
         screen: VisionTestScreen,
         navigationOptions:  {
-          header: null,
-          title: 'VisionTest'
+            header: null,
+            title: 'VisionTest'
         }
     },
     Friends: {
-      screen: FriendsScreen,
-      navigationOptions:  {
-        header: null,
-        title: 'Friends'
-      }
+        screen: FriendsScreen,
+        navigationOptions:  {
+            header: null,
+            title: 'Friends'
+        }
+    },
+    ViewSnacks: {
+        screen: ViewSnacksScreen,
+        navigationOptions:  {
+            header: null,
+            title: 'ViewSnacks'
+        }
     }
     ViewSnacksScreen: {
       screen: ViewSnacksScreen,
@@ -54,4 +61,4 @@ export default StackNavigator({
       }
     }
 }, {headerMode: 'screen',
-    initialRouteName: 'Home'});
+initialRouteName: 'Login'});

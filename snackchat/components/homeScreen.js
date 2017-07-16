@@ -41,9 +41,22 @@ class HomeScreen extends React.Component {
     }
   };
 
-  viewSnacksAlert = () => {
-    alert("hello!");
-  }
+    render() {
+        return (
+            <View style={styles.container}>
+                <TouchableOpacity onPress={this.takeImage} style={styles.homeI}>
+                    <Animatable.View animation="bounceInRight" duration={2500} style={{flexDirection:'row'}}>
+                        <Text style={styles.homeText}>SEND SNACKS  </Text>
+                        <Image style={styles.logo} source={require('../assets/images/logo.png')} />
+                    </Animatable.View>
+                </TouchableOpacity>
+                <TouchableOpacity onPress={this.toFriendsScreen} style={styles.homeII}>
+                    <Animatable.View animation="bounceInLeft" duration={2500} style={{flexDirection:'row'}}>
+                        <Image style={styles.logo} source={require('../assets/images/logo.png')} />
+                        <Text style={styles.homeText}>   GET SNACKS</Text>
+                    </Animatable.View>
+                </TouchableOpacity>
+            </View>
 
   toFriendsScreen() {
     this.props.navigation.navigate('Friends')
