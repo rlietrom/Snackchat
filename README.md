@@ -1,6 +1,6 @@
 # SnackChat
 
-Snackchat, a Horizons Hackathon project, was inspired by well known mobile application and an observation of the foodie community. Using the GoogleVision API, our app only lets users send photos if it recognizes that the photo contains food!
+SnackChat, a Horizons Hackathon project, was inspired by well known mobile application and an observation of the foodie community. Using the GoogleVision API, our app only lets users send photos if it recognizes that the photo contains food!
 
 ## Demo
 
