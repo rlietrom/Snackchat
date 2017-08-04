@@ -4,7 +4,7 @@ Snackchat is a clone of the Snapchat mobile application which utilizes the Googl
 
 ## inVision Demo
 
-(Insert demo here)
+![alt text](https://github.com/EvanPeterson1324/horizons-hackathon-snackchat/edit/master/SnackChat-Demo.git)
 
 
 ## Built using the following...
