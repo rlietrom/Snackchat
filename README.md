@@ -13,14 +13,13 @@ Snackchat is a clone of the Snapchat mobile application which utilizes the Googl
 * React Native
 * Prototyping/Demo with Sketch and inVision
 * MongoDB (Backend storage)
-* RealmJS (async image local storage)
 * AWS S3 (Image cloud storage)
 * Express server: https://github.com/ryanclyde/snackchat-backend (Deployed to heroku)
-* AJAX
+* AJAX http requests
 * Passport authentication
 
 
 ## Authors / Acknowledgments
 
-* **| Evan Peterson | Ryan Clyde | Carlie Ostrom | Audrey Setiadarma |**
+* ** Evan Peterson | Ryan Clyde | Carlie Ostrom | Audrey Setiadarma **
 
