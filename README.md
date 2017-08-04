@@ -1,6 +1,6 @@
 # Snackchat (Horizons Hackathon Project)
 
-Snackchat was inspired bt Snapchat mobile application which utilizes the GoogleVision API to make distinctions between items found in photos.  Much like Snapchat, our application allows users to take photos and send them to others but with a twist.  Snackchat only lets the user send the photo if it recognizes the main item in the photo to be food!
+Snackchat was inspired by well known mobile application and an observation of the foodie community. Using the GoogleVision API, our app only lets users send photos if it recognizes the photo contain food!
 
 ## Demo
 
@@ -11,10 +11,10 @@ Snackchat was inspired bt Snapchat mobile application which utilizes the GoogleV
 
 * Google Vision API
 * React Native development with Expo
-* Prototyping/Demo with Sketch and InVision
-* MongoDB (Backend storage)
-* AWS S3 (Image cloud storage)
-* Express server: https://github.com/ryanclyde/snackchat-backend (Deployed to Heroku)
+* Prototyping with Sketch and InVision
+* MongoDB (backend storage)
+* AWS S3 (image cloud storage)
+* Express server: https://github.com/ryanclyde/snackchat-backend (deployed with Heroku)
 * AJAX http requests
 * Passport authentication
 
@@ -26,7 +26,7 @@ Google Vision API
   The API here was essential for realizing our vision of identifying what was in the pictures that our users took. What ended up being the most challenging part of it was getting it set up with the Google Vision Client, truthfully. Authentication required more than 8 keys and many tokens. G Cloud was hard to decipher. Once Google Vision was set up, we had to filter through the keywords that it gave us based on the image. If 'food' or 'beverage' was in the list, we allowed the image to be sent. 
   
 Storage
-  None of us had ever had to store images so it was a learning curve to find out that we needed to also use AWS on top of MongoDB. MongoDB only stores JSON objects and documents up to 16mb — image files are much bigger than that. Once we got the post request of the image that the user took, we stored it in AsynchStorage then sent it out to AWS cloud storage. 
+  None of us had ever had to store images so it was a treat to find out that we needed to also use AWS on top of MongoDB. MongoDB only stores JSON objects and documents up to 16mb — image files are much bigger than that. Once we got the post request of the image that the user took, we stored it in AsynchStorage then sent it out to AWS cloud storage. 
 
 ## Authors / Acknowledgments
 
